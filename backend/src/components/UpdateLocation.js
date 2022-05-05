@@ -15,9 +15,9 @@ import {
     Paper
 } from '@mui/material';
 
-import '../assets/css/create-location.css';
+import '../assets/css/update-location.css';
 
-export default class CreateLocation extends Component {
+export default class UpdateLocation extends Component {
 
     constructor(props) {
         super(props);
@@ -143,7 +143,7 @@ export default class CreateLocation extends Component {
 
         return (
             <Master onLoad={this.onLoad} strict={true}>
-                <div className='create-location'>
+                <div className='update-location'>
                     <Paper className="location-form location-form-wrapper" elevation={10} style={visible ? null : { display: 'none' }}>
                         <h1 className="location-form-title"> {strings.UPDATE_LOCATION} </h1>
                         <form onSubmit={this.handleSubmit}>

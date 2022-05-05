@@ -163,7 +163,7 @@ export default class Locations extends Component {
                                     key={location._id}
                                     secondaryAction={
                                         <div>
-                                            <IconButton edge="end" href={`/update-company?c=${location._id}`}>
+                                            <IconButton edge="end" href={`/update-location?l=${location._id}`}>
                                                 <EditIcon />
                                             </IconButton>
                                             <IconButton edge="end" data-id={location._id} data-index={index} onClick={this.handleDelete}>
