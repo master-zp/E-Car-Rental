@@ -4,7 +4,8 @@ import Env from '../config/env.config';
 import { strings } from '../config/app.config';
 import CompanyService from '../services/CompanyService';
 import Backdrop from '../elements/SimpleBackdrop';
-import { toast } from 'react-toastify'
+import { toast } from 'react-toastify';
+import { Avatar as CompanyAvatar } from '../elements/Avatar';
 import {
     List,
     ListItem,
@@ -21,7 +22,6 @@ import {
     DialogActions,
 } from '@mui/material';
 import {
-    CorporateFare as CompanyIcon,
     Edit as EditIcon,
     Mail as MailIcon,
     Delete as DeleteIcon,
@@ -180,7 +180,12 @@ export default class Companies extends Component {
                                 >
                                     <ListItemAvatar>
                                         <Avatar>
-                                            <CompanyIcon />
+                                            <CompanyAvatar
+                                                user={company}
+                                                type={Env.USER_TYPE.COMPANY}
+                                                size='small'
+                                                readonly
+                                            />
                                         </Avatar>
                                     </ListItemAvatar>
                                     <ListItemText
