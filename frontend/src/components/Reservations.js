@@ -3,7 +3,7 @@ import Master from '../elements/Master';
 
 import '../assets/css/reservations.css';
 
-export default class Reservations extends Component {
+export default class Bookings extends Component {
 
     constructor(props) {
         super(props);
@@ -23,7 +23,7 @@ export default class Reservations extends Component {
 
         return (
             <Master onLoad={this.onLoad} strict={true}>
-                Reservations!
+                Bookings!
             </Master>
         );
     }
