@@ -286,7 +286,7 @@ class BookingList extends Component {
             return { companies: Helper.clone(nextProps.companies) };
         }
 
-        if (nextProps.statuses && !Helper.statusArrayEqual(statuses, nextProps.statuses)) {
+        if (nextProps.statuses && !Helper.arrayEqual(statuses, nextProps.statuses)) {
             return { statuses: Helper.clone(nextProps.statuses) };
         }
 
@@ -310,7 +310,7 @@ class BookingList extends Component {
             return this.setState({ page: 0 }, () => this.fetch());
         }
 
-        if (!Helper.statusArrayEqual(this.state.statuses, prevState.statuses)) {
+        if (!Helper.arrayEqual(this.state.statuses, prevState.statuses)) {
             return this.setState({ page: 0 }, () => this.fetch());
         }
 

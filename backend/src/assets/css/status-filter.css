@@ -25,7 +25,7 @@ div.status-filter ul.status-list li {
 
 div.status-filter ul.status-list li label.bs {
     padding: 3px;
-    width: 75px;
+    width: 80px;
     text-align: center;
     color: #fff;
     box-shadow: none;
@@ -37,11 +37,11 @@ div.status-filter ul.status-list li label.bs {
     overflow: hidden;
     margin-bottom: 0;
     display: inline-block;
-    opacity: 0.85;
+    opacity: 1;
 }
 
 div.status-filter ul.status-list li label.bs:hover {
-    opacity: 1;
+    opacity: .9;
 }
 
 div.status-filter ul.status-list li label.bs-void {
