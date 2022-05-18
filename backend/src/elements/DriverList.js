@@ -37,7 +37,7 @@ class DriverList extends Component {
             .then(data => {
                 const _data = data.length > 0 ? this.getDrivers(data[0].resultData) : [];
                 const _drivers = page === 1 ? _data : [...drivers, ..._data];
-                this.setState({ drivers: _drivers, loading: false, fetch: data.length > 0 }, () => {
+                this.setState({ drivers: _drivers, loading: false, fetch: _data.length > 0 }, () => {
                     if (onFetch) {
                         onFetch();
                     }
@@ -85,7 +85,7 @@ class DriverList extends Component {
                 ListboxProps={{
                     onScroll: (event) => {
                         const listboxNode = event.currentTarget;
-                        if (fetch && !loading && (listboxNode.scrollTop + listboxNode.clientHeight >= (listboxNode.scrollHeight - Env.PAGE_FETCH_OFFSET))) {
+                        if (fetch && !loading && (listboxNode.scrollTop + listboxNode.clientHeight >= (listboxNode.scrollHeight - Env.PAGE_OFFSET))) {
                             const p = page + 1;
                             this.setState({ page: p }, () => {
                                 this.fetch();
