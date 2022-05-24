@@ -268,7 +268,7 @@ export default class ChangePassword extends Component {
                                 >
                                     {confirmPasswordError
                                         ? commonStrings.PASSWORDS_DONT_MATCH
-                                        : (passwordLengthError ? commonStrings.ERROR_IN_PASSWORD : '')}
+                                        : (passwordLengthError ? commonStrings.PASSWORD_ERROR : '')}
                                 </FormHelperText>
                             </FormControl>
                             <div className='buttons'>
