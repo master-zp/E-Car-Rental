@@ -63,7 +63,8 @@ class DatePicker extends Component {
                                         }
                                         {params.InputProps.endAdornment}
                                     </>
-                            }} />
+                            }}
+                        />
                     }
                 />
             </LocalizationProvider>
