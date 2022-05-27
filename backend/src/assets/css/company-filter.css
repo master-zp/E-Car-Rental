@@ -45,6 +45,7 @@ div.company-filter ul.company-list li label img {
 }
 
 div.company-filter ul.company-list li input[type='checkbox'] {
+    cursor: pointer;
     display: inline-flex;
 }
 

@@ -13,7 +13,7 @@ class CompanyFilter extends Component {
         this.state = {
             companies: [],
             checkedCompanies: [],
-            allCompaniesChecked: true
+            allChecked: true
         }
     }
 
@@ -27,11 +27,15 @@ class CompanyFilter extends Component {
     };
 
     handleCheckCompanyChange = (e) => {
-        const { checkedCompanies } = this.state;
+        const { companies, checkedCompanies } = this.state;
         const companyId = e.currentTarget.getAttribute('data-id');
 
         if (e.currentTarget.checked) {
             checkedCompanies.push(companyId);
+
+            if (checkedCompanies.length === companies.length) {
+                this.setState({ allChecked: true });
+            }
         } else {
             const index = checkedCompanies.indexOf(companyId);
             checkedCompanies.splice(index, 1);
@@ -45,22 +49,22 @@ class CompanyFilter extends Component {
     };
 
     handleUncheckAllChange = (e) => {
-        const { allCompaniesChecked } = this.state;
+        const { allChecked } = this.state;
         const checkboxes = document.querySelectorAll('.company-checkbox');
 
-        if (allCompaniesChecked) { // uncheck all
+        if (allChecked) { // uncheck all
             checkboxes.forEach(checkbox => {
                 checkbox.checked = false;
             });
 
-            this.setState({ allCompaniesChecked: false, checkedCompanies: [] });
+            this.setState({ allChecked: false, checkedCompanies: [] });
         } else { // check all
             checkboxes.forEach(checkbox => {
                 checkbox.checked = true;
             });
 
             const { companies } = this.state, companyIds = Helper.flattenCompanies(companies);
-            this.setState({ allCompaniesChecked: true, checkedCompanies: companyIds }, () => {
+            this.setState({ allChecked: true, checkedCompanies: companyIds }, () => {
                 if (this.props.onChange) {
                     this.props.onChange(companyIds);
                 }
@@ -89,7 +93,7 @@ class CompanyFilter extends Component {
     }
 
     render() {
-        const { companies, allCompaniesChecked } = this.state;
+        const { companies, allChecked } = this.state;
 
         return (
             companies.length > 0 ? (
@@ -111,7 +115,7 @@ class CompanyFilter extends Component {
                     </ul>
                     <div className='filter-actions'>
                         <span onClick={this.handleUncheckAllChange} className='uncheckall'>
-                            {allCompaniesChecked ? commonStrings.UNCHECK_ALL : commonStrings.CHECK_ALL}
+                            {allChecked ? commonStrings.UNCHECK_ALL : commonStrings.CHECK_ALL}
                         </span>
                     </div>
                 </div>
