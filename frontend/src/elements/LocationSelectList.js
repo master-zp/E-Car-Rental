@@ -60,13 +60,14 @@ class LocationSelectList extends Component {
 
     render() {
         const {
+            init,
             loading,
             rows,
             fetch,
             page,
             keyword,
             selectedOptions } = this.state;
-            
+
         return (
             <MultipleSelect
                 loading={loading}
@@ -76,6 +77,7 @@ class LocationSelectList extends Component {
                 selectedOptions={selectedOptions}
                 required={this.props.required || false}
                 multiple={this.props.multiple}
+                readOnly={this.props.readOnly}
                 freeSolo={this.props.freeSolo}
                 type={Env.RECORD_TYPE.LOCATION}
                 variant={this.props.variant || 'standard'}
@@ -92,12 +94,12 @@ class LocationSelectList extends Component {
                 }}
                 onFocus={
                     (event) => {
-                        // if (!init) {
-                        //     const p = 1;
-                        //     this.setState({ rows: [], page: p }, () => {
-                        //         this.fetch(() => { this.setState({ init: true }) });
-                        //     });
-                        // }
+                        if (!init && this.props.init) {
+                            const p = 1;
+                            this.setState({ rows: [], page: p }, () => {
+                                this.fetch(() => { this.setState({ init: true }) });
+                            });
+                        }
                     }
                 }
                 onInputChange={
