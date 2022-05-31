@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Env from '../config/env.config';
 import UserService from '../services/UserService';
 import Master from '../elements/Master';
 import { strings as commonStrings } from '../lang/common';
@@ -125,7 +126,7 @@ export default class Activate extends Component {
     handleResend = () => {
         const { email } = this.state;
 
-        UserService.resend(email, false)
+        UserService.resend(email, false, Env.APP_TYPE)
             .then(status => {
                 if (status === 200) {
                     toast(commonStrings.ACTIVATION_EMAIL_SENT, { type: 'info' });
