@@ -80,7 +80,7 @@ class LocationSelectList extends Component {
                 readOnly={this.props.readOnly}
                 freeSolo={this.props.freeSolo}
                 hidePopupIcon={this.props.hidePopupIcon}
-                overflowHidden={this.props.overflowHidden}
+                customOpen={this.props.customOpen}
                 type={Env.RECORD_TYPE.LOCATION}
                 variant={this.props.variant || 'standard'}
                 ListboxProps={{

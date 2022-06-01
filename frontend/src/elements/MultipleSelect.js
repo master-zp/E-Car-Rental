@@ -44,8 +44,10 @@ export default function MultipleSelect({
     variant,
     onOpen,
     readOnly,
-    hidePopupIcon
+    hidePopupIcon,
+    customOpen
 }) {
+    const [init, setInit] = React.useState(false);
     const [open, setOpen] = React.useState(false);
     const [values, setValues] = useState([]);
     const [inputValue, setInputValue] = useState('');
@@ -58,7 +60,7 @@ export default function MultipleSelect({
     return (
         <div className='multiple-select'>
             <Autocomplete
-                // open={open}
+                open={customOpen ? open : undefined}
                 readOnly={readOnly}
                 options={options}
                 value={multiple ? values : (values.length > 0 ? values[0] : null)}
@@ -66,12 +68,20 @@ export default function MultipleSelect({
                 isOptionEqualToValue={(option, value) => option._id === value._id}
                 inputValue={inputValue}
                 onInputChange={(event, value) => {
-                    if (values.length === 0) {
+                    if (init) {
+                        if (!event) {
+                            setInputValue(value);
+                            setOpen(false);
+                            return;
+                        }
+
                         if (value.length === 0) {
                             if (open) setOpen(false);
                         } else {
                             if (!open) setOpen(true);
                         }
+                    } else {
+                        setInit(true);
                     }
 
                     setInputValue(value);
@@ -82,9 +92,7 @@ export default function MultipleSelect({
                 }}
                 onChange={(event, newValue) => {
 
-                    if (!multiple
-                        && event && event.type === 'keydown' && event.key === 'Enter'
-                        && newValue && !newValue._id) {
+                    if (event && event.type === 'keydown' && event.key === 'Enter') {
                         return;
                     }
 
