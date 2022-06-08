@@ -36,6 +36,7 @@ export default function CarsScreen({ navigation, route }) {
         <Master style={styles.master} onLoad={onLoad} reload={reload}>
             {visible &&
                 <CarList
+                    navigation={navigation}
                     pickupLocation={route.params.pickupLocation}
                     dropOffLocation={route.params.dropOffLocation}
                     from={new Date(route.params.from)}
