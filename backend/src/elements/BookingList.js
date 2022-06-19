@@ -310,10 +310,12 @@ class BookingList extends Component {
                             this.setState({ loading: false });
                         });
                     } else {
-                        this.setState({ rows: _data.resultData, rowCount: totalRecords, loading: false }, () => {
+                        this.setState({ rows: _data.resultData, rowCount: totalRecords }, () => {
                             if (this.props.onLoad) {
                                 this.props.onLoad({ rows: _data.resultData, rowCount: totalRecords });
                             }
+
+                            this.setState({ loading: false });
                         });
                     }
                 })
