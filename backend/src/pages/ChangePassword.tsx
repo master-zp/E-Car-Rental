@@ -80,8 +80,8 @@ const ChangePassword = () => {
           setNewPasswordError(false)
         }
 
-        const data = {
-          _id: user._id,
+        const data: bookcarsTypes.changePasswordPayload = {
+          _id: user._id as string,
           password: currentPassword,
           newPassword,
           strict: true,
@@ -90,7 +90,7 @@ const ChangePassword = () => {
         const status = await UserService.changePassword(data)
 
         if (status === 200) {
-          const _user = await UserService.getUser(user._id)
+          const _user = await UserService.getUser(user._id as string)
 
           if (_user) {
             setUser(_user)
@@ -107,7 +107,7 @@ const ChangePassword = () => {
         }
       }
 
-      const status = await UserService.checkPassword(user._id, currentPassword)
+      const status = await UserService.checkPassword(user._id as string, currentPassword)
 
       setCurrentPasswordError(status !== 200)
       setNewPasswordError(false)

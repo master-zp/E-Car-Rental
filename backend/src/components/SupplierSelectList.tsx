@@ -41,7 +41,7 @@ const SupplierSelectList = ({
   const getCompanies = (companies: bookcarsTypes.User[]): bookcarsTypes.Option[] =>
     companies.map((company) => {
       const { _id, fullName, avatar } = company
-      return { _id, name: fullName, image: avatar }
+      return { _id: _id as string, name: fullName, image: avatar }
     })
 
   const _fetch = async (page: number, keyword: string, onFetch?: (data: { rows: any[], rowCount: number }) => void) => {
