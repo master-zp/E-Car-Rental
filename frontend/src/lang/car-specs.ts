@@ -14,12 +14,6 @@ const strings = new LocalizedStrings({
     MORE_THAN_FOOR_DOORS: '4+ doors',
     MORE_THAN_FIVE_SEATS: '5+ seats',
   },
-  el: {
-    CAR_SPECS: 'προδιαγραφές αυτοκινήτου',
-    AIRCON: 'Κλιματισμός',
-    MORE_THAN_FOOR_DOORS: '4+ πόρτες',
-    MORE_THAN_FIVE_SEATS: '5+ καθίσματα',
-  },
 })
 
 langHelper.setLanguage(strings)
