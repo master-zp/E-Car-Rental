@@ -16,11 +16,11 @@ let LOCATION_ID: string
 let LOCATION_NAMES: bookcarsTypes.LocationName[] = [
   {
     language: 'en',
-    value: uuid(),
+    name: uuid(),
   },
   {
     language: 'fr',
-    value: uuid(),
+    name: uuid(),
   },
 ]
 
@@ -122,15 +122,15 @@ describe('PUT /api/update-location/:id', () => {
     LOCATION_NAMES = [
       {
         language: 'en',
-        value: uuid(),
+        name: uuid(),
       },
       {
         language: 'fr',
-        value: uuid(),
+        name: uuid(),
       },
       {
         language: 'es',
-        value: uuid(),
+        name: uuid(),
       },
     ]
 
@@ -173,7 +173,7 @@ describe('GET /api/location/:id/:language', () => {
     let res = await request(app)
       .get(`/api/location/${LOCATION_ID}/${language}`)
     expect(res.statusCode).toBe(200)
-    expect(res.body?.name).toBe(LOCATION_NAMES.filter((v) => v.language === language)[0].value)
+    expect(res.body?.name).toBe(LOCATION_NAMES.filter((v) => v.language === language)[0].name)
 
     res = await request(app)
       .get(`/api/location/${testHelper.GetRandromObjectIdAsString()}/${language}`)
@@ -190,7 +190,7 @@ describe('GET /api/locations/:page/:size/:language', () => {
     const language = 'en'
 
     let res = await request(app)
-      .get(`/api/locations/${testHelper.PAGE}/${testHelper.SIZE}/${language}?s=${LOCATION_NAMES[0].value}`)
+      .get(`/api/locations/${testHelper.PAGE}/${testHelper.SIZE}/${language}?s=${LOCATION_NAMES[0].name}`)
     expect(res.statusCode).toBe(200)
     expect(res.body.length).toBe(1)
 
