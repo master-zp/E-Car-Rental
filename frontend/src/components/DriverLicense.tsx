@@ -13,6 +13,7 @@ import '@/assets/css/driver-license.css'
 interface DriverLicenseProps {
   user?: bookcarsTypes.User
   variant?: 'standard' | 'outlined'
+  className?: string
   onUpload?: (filename: string) => void
   onDelete?: () => void
 }
@@ -20,6 +21,7 @@ interface DriverLicenseProps {
 const DriverLicense = ({
   user,
   variant = 'standard',
+  className,
   onUpload,
   onDelete,
 }: DriverLicenseProps) => {
@@ -78,7 +80,7 @@ const DriverLicense = ({
   }
 
   return (
-    <div className="driver-license">
+    <div className={`driver-license ${className || ''}`}>
       {variant === 'standard' ? (
         <Input
           value={license || commonStrings.UPLOAD_FILE}
