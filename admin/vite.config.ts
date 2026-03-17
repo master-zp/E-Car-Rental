@@ -101,10 +101,11 @@ export default ({ mode }: { mode: string }) => {
                 test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
                 priority: 10,
               },
-              {
+                 {
                 name: 'router',
-                test: /[\\/]node_modules[\\/]react-router-dom[\\/]/,
+                test: /[\\/]node_modules[\\/]react-router(-dom)?[\\/]/,
                 priority: 20,
+                minSize: 0,
               },
             ],
           },
